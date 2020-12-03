@@ -1,0 +1,16 @@
+
+name: demo api
+variables:
+    var1: value1
+    var2: value2
+request:
+    url: /api/path/$var1
+    method: POST
+    headers:
+        Content-Type: "application/json"
+    json:
+        key: $var2
+extract:
+    token: headers.Authorization
+validate:
+    - eq: ["status_code", 200]

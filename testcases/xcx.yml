@@ -1,0 +1,20 @@
+#- config:
+#    name: 反手猴小程序---线上
+#    request:
+#    base_url: https://api.fanshouhou.com
+#
+## 登录
+#- test:
+    name: 微信授权登录
+    request:
+      url: https://api.fanshouhou.com/business/login/wxlogin
+      method: POST
+      data:
+        code: 011Ss60w3SkqlV2g9r3w30Vqj20Ss60V
+    extract:
+      xcx_token: headers.Authorization
+    validate:
+      - eq: [content.code, 200]
+
+
+

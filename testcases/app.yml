@@ -1,0 +1,233 @@
+- config:
+    name: 反手猴APP
+    base_url: http://192.168.1.119:8040
+    variables:
+      houseId: 112
+      id: 149
+      userIp: 457012794
+      userId: 121
+      status_code: 047002
+      types: 030002
+
+# 登录
+- test:
+    name: 短信验证码登录
+    request:
+      url: /business/login/login
+      method: POST
+      json:
+        phone: 13041201075
+        deviceToken: 6af1f59b70d113ecd93f783e7ba13e77c3c815eaaefdf2c4084f5f7f535d4bd5
+        code: 147258
+    extract:
+      token: headers.Authorization
+    validate:
+      - eq: ["content.code", 200]
+
+#
+## 房源相关
+#- test:
+#    name: 搜索房源
+#    request:
+#      url: /business/house/info/searchHouse
+#      method: POST
+#      json:
+#        pageNo: 1
+#        pageSize: 20
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 房源详情
+#- test:
+#    name: 房源详情
+#    request:
+#      url: /business/house/info/getHouseInfo?houseId=$houseId
+#      method: GET
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 浏览历史
+#- test:
+#    name: 浏览历史
+#    request:
+#      url: /business/businessHouseBrowse/historyBrowse
+#      method: GET
+#      headers:
+#        Authorization: $token
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 房源收藏
+#- test:
+#    name: 房源收藏
+#    request:
+#      url: /business/house/collect/listCollect
+#      method: POST
+#      headers:
+#        Authorization: $token
+#      json:
+#        page: 1
+#        pageSize: 20
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 行程规划
+#- test:
+#    name: 行程规划
+#    request:
+#      url: /business/businessHouseReserve/historyReserve
+#      method: POST
+#      headers:
+#        Authorization: $token
+#      json:
+#        reserveStatus: $status_code
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 我的房产
+#- test:
+#    name: 我的房产
+#    request:
+#      url: /business/house/info/getOwnerHouse
+#      method: GET
+#      headers:
+#        Authorization: $token
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 广场内容
+#- test:
+#    name: 广场内容
+#    request:
+#      url: /social/socialContent/contentList?channel=&pageNo=1&pageSize=30
+#      method: GET
+#      headers:
+#        Authorization: $token
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 广场内容详情
+#- test:
+#    name: 广场内容详情
+#    request:
+#      url: /social/socialContent/getContentDetail?id=$id
+#      method: GET
+#      headers:
+#        Authorization: $token
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 资讯内容
+#- test:
+#    name: 资讯内容
+#    request:
+#      url: /business/operationNews/listByTypes?pageNo=1&pageSize=20&types=$types
+#      method: GET
+#      headers:
+#        Authorization: $token
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 小知识内容
+#- test:
+#    name: 小知识内容
+#    request:
+#      url: /business/operationKnowBase/searchList?pageNo=1&pageSize=20
+#      method: GET
+#      headers:
+#        Authorization: $token
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 交易服务内容
+#- test:
+#    name: 交易服务内容
+#    request:
+#      url: /business/operationServiceMall/searchMall
+#      method: GET
+#      headers:
+#        Authorization: $token
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 个人资料
+#- test:
+#    name: 个人资料
+#    request:
+#      url: /business/sys/user/getById
+#      method: POST
+#      headers:
+#        Authorization: $token
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 个人主页--圈子内容
+#- test:
+#    name: 个人主页--圈子内容
+#    request:
+#      url: /social/socialContent/contentList?pageNo=1&pageSize=30&userIp=$userIp
+#      method: GET
+#      headers:
+#        Authorization: $token
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 个人主页--在售房源
+#- test:
+#    name: 在售房源
+#    request:
+#      url: /business/house/info/getUserHouse?userId=$userId
+#      method: GET
+#      headers:
+#        Authorization: $token
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 我的服务
+#- test:
+#    name: 我的服务
+#    request:
+#      url: /business/businessIntention/listByOperator
+#      method: POST
+#      headers:
+#        Authorization: $token
+#      json:
+#        pageNo: 1
+#        pageSize: 20
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 我的关注
+#- test:
+#    name: 我的关注
+#    request:
+#      url: /social/socialIp/getFocus?userIp=$userIp
+#      method: GET
+#      headers:
+#        Authorization: $token
+#    validate:
+#      - eq: ["content.code", 200]
+#
+## 我的粉丝
+#- test:
+#    name: 我的粉丝
+#    request:
+#      url: /social/socialIp/getFans?userIp=$userIp
+#      method: GET
+#      headers:
+#        Authorization: $token
+#    validate:
+#      - eq: ["content.code", 200]
+
+
+
+
+
+
+
+
+
+
+
+
+

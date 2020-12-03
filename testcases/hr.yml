@@ -1,0 +1,42 @@
+- config:
+    name: 小程序---线上相关
+    request:
+      base_url: https://api.fanshouhou.com
+- test:
+    name: 微信授权登录
+    request:
+      url: /business/login/wxlogin
+      method: POST
+      data:
+        code: 011Ss60w3SkqlV2g9r3w30Vqj20Ss60V
+    extract:
+      - token: headers.Authorization
+    validate:
+      - eq: [status_code, 200]
+- test:
+    name: 获取用户信息
+    request:
+      url: /business/sys/user/getById
+      method: POST
+      headers:
+        Authorization: $token
+    validate:
+      - eq: [status_code, 200]
+  
+# 增加了一些内容
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
